@@ -54,6 +54,7 @@ app.use(morgan('dev'));                            // La opcion dev de la inform
 // Routes del api
 app.use('/api/v1/users', require('./api/v1/user.routes'));    // Ruta para users
 app.use('/api/v1/articles', require('./api/v1/article.routes')); // Ruta para articles
+app.use('/api/v1/categories', require('./api/v1/category.routes')); // Ruta para categories
 
 // Rutas del API
 // Se configura una ruta sencilla a traves del metodo GET para probar 

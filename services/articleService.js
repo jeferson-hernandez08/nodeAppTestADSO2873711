@@ -39,12 +39,12 @@ const createArticle = async (title, content, UserId) => {
     }
 };
 
-const updateArticle = async (id, title, content, idUser) => {
+const updateArticle = async (id, title, content, UserId) => {
     try {
         let updateArticle = await db.Article.update({
             title, 
             content, 
-            idUser 
+            UserId 
         }, { 
             where: { 
                 id,

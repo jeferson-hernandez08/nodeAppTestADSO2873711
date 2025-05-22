@@ -2,7 +2,7 @@
 const Articleservice = require('../services/articleService'); // Importamos el servicio de articulos
 
 const getAllArticles = async (req, res) => {
-    const articles = await Articleservice.getAllArticles(); // Llamamos al servicio para obtener todos los articulos
+    const allArticles = await Articleservice.getAllArticles(); // Llamamos al servicio para obtener todos los articulos
 
     if(allArticles)
         res.status(200).send({ status: "OK", data: allArticles }); // Enviamos la respuesta al cliente
@@ -31,7 +31,7 @@ const createArticle = async (req, res) => {
 
 const updateArticle = async (req, res) => {  
     let id = req.params.ArticleId; // Obtenemos el id del articulo desde la url
-    let { title, content, idUser  } = req.body; 
+    let { title, content, UserId  } = req.body; 
     const updateArticle = await Articleservice.updateArticle(id, title, content, UserId); // Llamamos al servicio para actualizar el articulo
     if(updateArticle)
         res.status(200).send({ status: "OK", data: updateArticle }); // Enviamos la respuesta al cliente
