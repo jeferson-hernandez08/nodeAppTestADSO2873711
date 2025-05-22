@@ -29,9 +29,9 @@
 
 //____ 3. server.js - Servidor Express con rutas API y configuración de entorno
 
-const express = require('express');           // Importar el módulo Express
-const app = express();                        // Crear una instancia de la aplicación Express
-const bodyParser = require('body-parser');    // Importar body-parser para manejar datos JSON
+const express = require('express');            // Importar el módulo Express
+const app = express();                         // Crear una instancia de la aplicación Express
+const bodyParser = require('body-parser');     // Importar body-parser para manejar datos JSON
 const morgan = require('morgan');              // Middleware que informa sobre las peticiones del servidoor
 
 if (process.env.NODE_ENV !== 'production') {
@@ -52,8 +52,8 @@ app.use(morgan('dev'));                            // La opcion dev de la inform
 //app.use(morgan('common'));                           // La opcion common de la informacion principal.
 
 // Routes del api
-// Ritas de usuarios para la v1 del API
 app.use('/api/v1/users', require('./api/v1/user.routes'));    // Ruta para users
+app.use('/api/v1/articles', require('./api/v1/article.routes')); // Ruta para articles
 
 // Rutas del API
 // Se configura una ruta sencilla a traves del metodo GET para probar 
