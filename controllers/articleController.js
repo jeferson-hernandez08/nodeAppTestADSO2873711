@@ -22,7 +22,11 @@ const getArticle = async (req, res) => {
 
 const createArticle = async (req, res) => {
     const { body } = req; // Obtenemos el body de la peticion
-    const createArticle = await Articleservice.createArticle(body.title, body.content, body.UserId); // Llamamos al servicio para crear el articulo
+    const { title, content, UserId, categories } = body;    // Extraemos las "categories" del body, para mandarlas al servicio al array  quemado
+
+    // Pasamos "categories" al servicio
+    const createArticle = await Articleservice.createArticle(title, content, UserId, categories); // Llamamos al servicio para crear el articulo
+
     if (createArticle)
         res.status(200).send({ status: "OK", data: createArticle }); // Enviamos la respuesta al cliente
     else 

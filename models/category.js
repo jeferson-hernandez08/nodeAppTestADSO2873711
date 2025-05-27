@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Category.belongsToMany(models.Article, {
-        through: 'articleCategories',  // Tabla intermedia
+        through: 'articleCategories',  // Tabla intermedia, tal cual como en la base de datos
         as: 'articles',                // Nombre del alias para la relación
       });
     }

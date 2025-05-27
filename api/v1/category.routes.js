@@ -8,7 +8,7 @@ const router = Router();   // Llamamos al método Router de expres
 // req => request => En request llegan los datos del body 
 // res => response => En response se envian los datos hacia al cliente
 
-router.get('/', categoryController.getAllCategory);  // Obtener todas las categorias
+router.get('/', categoryController.getAllCategories);  // Obtener todas las categorias
 
 router.get('/:categotyId', categoryController.getCategory);  // Obtener una categoria por id
 

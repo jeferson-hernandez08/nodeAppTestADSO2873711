@@ -1,5 +1,5 @@
 // Enlazamos nuestro servicio 
-const Articleservice = require('../services/categoryService'); // Importamos el servicio de articulos
+const Categoryservice = require('../services/categoryService'); // Importamos el servicio de articulos
 
 const getAllCategories = async (req, res) => {
     const allCategories = await Categoryservice.getAllCategories(); // Llamamos al servicio para obtener todos los articulos
@@ -41,14 +41,14 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
     let id = req.params.categoryId; // Obtenemos el id del articulo desde la url
-    const deleteCategory = await Articleservice.deleteCategory(id); // Llamamos al servicio para eliminar el articulo
+    const deleteCategory = await Categoryservice.deleteCategory(id); // Llamamos al servicio para eliminar el articulo
     if(deleteCategory)
         res.status(200).send({ status: "OK", data: deleteCategory }); // Enviamos la respuesta al cliente
     else 
         res.status(400).send({ status: "FAILED", data: deleteCategory }); // Enviamos un error si no se pudo eliminar el articulo
 };
 
-module.exports = {      // QUEDE AQUI ****
+module.exports = {     
     getAllCategories,
     getCategory,
     createCategory,
