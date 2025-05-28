@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Article.belongsTo(models.User, {
         foreignKey: 'userId',             // Clave foránea en el modelo
-        as: 'Users'
+        as: 'User'
       });   // Un articulo pertenece a un usuario
     
       models.User.hasMany(Article);    // Un usuario tiene muchos articulos
