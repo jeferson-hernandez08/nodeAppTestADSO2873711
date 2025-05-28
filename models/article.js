@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       // Un articulo pertenece a un usuario
       Article.belongsTo(models.User, {
         foreignKey: 'userId',             // Clave foránea en el modelo
-        as: 'Users'
+        as: 'User'
       });   
       
       // Un usuario tiene muchos articulos
@@ -24,8 +24,10 @@ module.exports = (sequelize, DataTypes) => {
 
       // Un articulo puede pertenecer a muchas categorias y una categoria puede tener muchos articulos
       Article.belongsToMany(models.Category, {
-        through: 'articleCategories',  // Tabla intermedia
+        through: 'articleCategories',  // NOMBRE exacto de la Tabla intermedia
         as: 'categories',              // Nombre del alias para la relación
+        foreignKey: 'articleid', // 👈 minúsculas y snake_case
+        otherKey: 'categoryid'    // 👈 minúsculas y snake_case
       });
     }
   }
