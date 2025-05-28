@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
     static associate(models) {
       Article.belongsTo(models.User, {
-        foreignKey: 'userId', // Asegúrate de especificar la foreignKey
+        foreignKey: 'userId', // Clave foránea en el modelo
         as: 'User'
       });
       
@@ -15,24 +15,24 @@ module.exports = (sequelize, DataTypes) => {
       });
       
       Article.belongsToMany(models.Category, {
-        through: 'articleCategories',
+        through: 'articlecategories', // Nombre EXACTO de la tabla intermedia
         as: 'categories',
-        foreignKey: 'articleId' // Especifica foreignKey explícitamente
+        foreignKey: 'articleid' // Clave foránea en la tabla intermedia (en minúsculas)
       });
     }
   }
   Article.init({
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
-    userId: { // Define explícitamente con opciones
+    userId: { 
       type: DataTypes.INTEGER,
-      field: 'UserId' // Fuerza el nombre exacto de la columna en la BD
+      field: 'userid' // 👈 Nombre EXACTO de la columna en la BD (minúsculas)
     }
   }, {
     sequelize,
     modelName: 'Article',
-    tableName: 'Articles', // Asegúrate que coincide con el nombre real de la tabla
-    underscored: false // Desactiva snake_case conversion
+    tableName: 'articles', // 👈 Nombre EXACTO de la tabla (minúsculas)
+    underscored: false
   });
   return Article;
 };
