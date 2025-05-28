@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       Article.belongsToMany(models.Category, {
         through: 'articleCategories', // Nombre EXACTO de la tabla intermedia
         as: 'categories',
-        foreignKey: 'articleid' // Clave foránea en la tabla intermedia (en minúsculas)
       });
     }
   }
