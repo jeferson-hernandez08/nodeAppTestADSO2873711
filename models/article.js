@@ -11,8 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Article.belongsTo(models.User);   // Un articulo pertenece a un usuario
+      Article.belongsTo(models.User, {
+        foreignKey: 'userId',             // Clave foránea en el modelo
+        as: 'Users'
+      });   // Un articulo pertenece a un usuario
+    
       models.User.hasMany(Article);    // Un usuario tiene muchos articulos
+
       // Un articulo puede pertenecer a muchas categorias y una categoria puede tener muchos articulos
       Article.belongsToMany(models.Category, {
         through: 'articleCategories',  // Tabla intermedia
