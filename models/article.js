@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT,
     userId: { 
       type: DataTypes.INTEGER,
-      field: 'userid' // 👈 Nombre EXACTO de la columna en la BD (minúsculas)
+      field: 'userId' // 👈 Nombre EXACTO de la columna en la BD (minúsculas)
     }
   }, {
     sequelize,
