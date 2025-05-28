@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Article',
-    tableName: 'articles', // 👈 Nombre EXACTO de la tabla (minúsculas)
+    tableName: 'Articles', // 👈 Nombre EXACTO de la tabla 
     underscored: false
   });
   return Article;
