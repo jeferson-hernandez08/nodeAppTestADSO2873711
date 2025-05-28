@@ -1,8 +1,8 @@
 // Enlazamos nuestro servicio 
-const categoryservice = require('../services/categoryService'); // Importamos el servicio de articulos
+const Categoryservice = require('../services/categoryService'); // Importamos el servicio de articulos
 
 const getAllCategories = async (req, res) => {
-    const allCategories = await categoryservice.getAllCategories(); // Llamamos al servicio para obtener todos los articulos
+    const allCategories = await Categoryservice.getAllCategories(); // Llamamos al servicio para obtener todos los articulos
 
     if(allCategories)
         res.status(200).send({ status: "OK", data: allCategories }); // Enviamos la respuesta al cliente
@@ -13,7 +13,7 @@ const getAllCategories = async (req, res) => {
 const getCategory = async (req, res) => {
     let id = req.params.categoryId; // Obtenemos el id del articulo desde la url
     try {
-        const Category = await categoryservice.getCategory(id);   // Llamamos al servicio para obtener el articulo por id
+        const Category = await Categoryservice.getCategory(id);   // Llamamos al servicio para obtener el articulo por id
         res.status(200).send({ status: "OK", data: Category }); // Enviamos la respuesta al cliente
     } catch (error) {
         res.status(error.status || 500).send({ status: "FAILED", data: {error: error.message }}); // Enviamos un error si no se encontro el articulo
@@ -22,7 +22,7 @@ const getCategory = async (req, res) => {
 
 const createCategory = async (req, res) => {
     const { body } = req; // Obtenemos el body de la peticion
-    const createCategory = await categoryservice.createCategory(body.name); // Llamamos al servicio para crear el articulo
+    const createCategory = await Categoryservice.createCategory(body.name); // Llamamos al servicio para crear el articulo
     if (createCategory)
         res.status(200).send({ status: "OK", data: createCategory }); // Enviamos la respuesta al cliente
     else 
@@ -32,7 +32,7 @@ const createCategory = async (req, res) => {
 const updateCategory = async (req, res) => {  
     let id = req.params.categoryId; // Obtenemos el id del articulo desde la url
     let { name  } = req.body; 
-    const updateCategory = await categoryservice.updateCategory(id, name); // Llamamos al servicio para actualizar el articulo
+    const updateCategory = await Categoryservice.updateCategory(id, name); // Llamamos al servicio para actualizar el articulo
     if(updateCategory)
         res.status(200).send({ status: "OK", data: updateCategory }); // Enviamos la respuesta al cliente
     else 
@@ -41,7 +41,7 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
     let id = req.params.categoryId; // Obtenemos el id del articulo desde la url
-    const deleteCategory = await categoryservice.deleteCategory(id); // Llamamos al servicio para eliminar el articulo
+    const deleteCategory = await Categoryservice.deleteCategory(id); // Llamamos al servicio para eliminar el articulo
     if(deleteCategory)
         res.status(200).send({ status: "OK", data: deleteCategory }); // Enviamos la respuesta al cliente
     else 
