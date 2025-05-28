@@ -30,12 +30,12 @@ const getArticle = async (id) => {
     }
 };
                                                                         // Aqui continuación de la guía 5 | Array quemado de categorías
-const createArticle = async (title, content, UserId, categories) => {   // Agregamos "categories" como parámetro, traidoo del controller 
+const createArticle = async (title, content, userId, categories) => {   // Agregamos "categories" como parámetro, traidoo del controller 
     try {
         let newArticle = await db.Article.create({
             title,
             content,
-            UserId
+            userId
         });
         if (newArticle && categories) {     // Verificams si hay categorías
             //const categories = [1,2,4];    // Ejemplo de categorías a asociar, categorias existentes array quemado
@@ -47,12 +47,12 @@ const createArticle = async (title, content, UserId, categories) => {   // Agreg
     }
 };
 
-const updateArticle = async (id, title, content, UserId) => {
+const updateArticle = async (id, title, content, userId) => {
     try {
         let updateArticle = await db.Article.update({
             title, 
             content, 
-            UserId 
+            userId 
         }, { 
             where: { 
                 id,
