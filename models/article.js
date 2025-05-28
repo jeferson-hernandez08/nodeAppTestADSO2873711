@@ -11,12 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // Un articulo pertenece a un usuario
       Article.belongsTo(models.User, {
         foreignKey: 'userId',             // Clave foránea en el modelo
-        as: 'User'
-      });   // Un articulo pertenece a un usuario
-    
-      models.User.hasMany(Article);    // Un usuario tiene muchos articulos
+        as: 'Users'
+      });   
+      
+      // Un usuario tiene muchos articulos
+      models.User.hasMany(Article, {
+        foreignKey: 'userId',             // Clave foránea en el modelo
+      });    
 
       // Un articulo puede pertenecer a muchas categorias y una categoria puede tener muchos articulos
       Article.belongsToMany(models.Category, {
@@ -28,7 +32,10 @@ module.exports = (sequelize, DataTypes) => {
   Article.init({
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
-    userId: DataTypes.INTEGER
+    userId: { 
+      type: DataTypes.INTEGER,
+      field: 'userId' // 👈 Nombre EXACTO de la columna en la BD 
+    }
   }, {
     sequelize,
     modelName: 'Article',
