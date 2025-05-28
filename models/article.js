@@ -4,19 +4,26 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
+     /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
     static associate(models) {
-      Article.belongsTo(models.User, {
-        foreignKey: 'userId', // Clave foránea en el modelo
-        as: 'User'
+      // define association here
+      Article.belongsTo(models.User, {     // Un articulo pertenece a un usuario
+        foreignKey: 'userId',             // Clave foránea en el modelo
+        as: 'Users'
       });
       
-      models.User.hasMany(Article, {
+      models.User.hasMany(Article, {     // Un usuario tiene muchos articulos
         foreignKey: 'userId'
       });
       
+      // Un articulo puede pertenecer a muchas categorias y una categoria puede tener muchos articulos
       Article.belongsToMany(models.Category, {
-        through: 'articleCategories', // Nombre EXACTO de la tabla intermedia
-        as: 'categories',
+        through: 'articleCategories',   // Nombre EXACTO de la tabla intermedia
+        as: 'Categories',
       });
     }
   }
