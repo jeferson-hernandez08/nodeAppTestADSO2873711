@@ -34,7 +34,7 @@ const createArticle = async (req, res) => {
 };
 
 const updateArticle = async (req, res) => {  
-    let id = req.params.ArticleId; // Obtenemos el id del articulo desde la url
+    let id = req.params.articleId; // Obtenemos el id del articulo desde la url
     let { title, content, userId  } = req.body; 
     const updateArticle = await Articleservice.updateArticle(id, title, content, userId); // Llamamos al servicio para actualizar el articulo
     if(updateArticle)
@@ -44,7 +44,7 @@ const updateArticle = async (req, res) => {
 };
 
 const deleteArticle = async (req, res) => {
-    let id = req.params.ArticleId; // Obtenemos el id del articulo desde la url
+    let id = req.params.articleId; // Obtenemos el id del articulo desde la url
     const deleteArticle = await Articleservice.deleteArticle(id); // Llamamos al servicio para eliminar el articulo
     if(deleteArticle)
         res.status(200).send({ status: "OK", data: deleteArticle }); // Enviamos la respuesta al cliente

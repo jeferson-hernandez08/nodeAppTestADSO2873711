@@ -13,8 +13,8 @@ router.get('/:articleId', articleController.getArticle);  // Obtener un articulo
 
 router.post('/', articleController.createArticle);  // Crear un nuevo articulo
 
-router.put('/:ArticleId', articleController.updateArticle);  // Actualizar un articulo por id
+router.put('/:articleId', articleController.updateArticle);  // Actualizar un articulo por id
 
-router.delete('/:ArticleId', articleController.deleteArticle);  // Eliminar un articulo por id
+router.delete('/:articleId', articleController.deleteArticle);  // Eliminar un articulo por id
 
 module.exports = router;  // Exportamos el router para usarlo en el servidor

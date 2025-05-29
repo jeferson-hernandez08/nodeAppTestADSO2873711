@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       Article.belongsToMany(models.Category, {
         through: 'articleCategories',  // NOMBRE exacto de la Tabla intermedia
         as: 'categories',              // Nombre del alias para la relación
-        foreignKey: 'articleid', // 👈 minúsculas y snake_case
-        otherKey: 'categoryid'    // 👈 minúsculas y snake_case
+        foreignKey: 'articleId', // 👈 minúsculas y snake_case
+        otherKey: 'categoryId'    // 👈 minúsculas y snake_case
       });
     }
   }
@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Article',
+    tableName: 'Articles', // Nombre de la tabla en la base de datos
   });
   return Article;
 };
