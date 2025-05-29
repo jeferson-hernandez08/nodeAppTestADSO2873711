@@ -10,10 +10,10 @@ const getAllArticles = async () => {
                 as: "User", // Alias del modelo
                 attributes: ['id', 'name', 'email'],
             },
-            // attributes: {
-            //     exclude: ['createdAt', 'updatedAt']  // Excluir campos de fecha de creación y actualización
-            // },
-            // include: ["categories"]     // Incluir las categorías que estan relacionadas al artículo
+            attributes: {
+                exclude: ['createdAt', 'updatedAt']  // Excluir campos de fecha de creación y actualización
+            },
+            include: ["categories"]     // Incluir las categorías que estan relacionadas al artículo
         });
         return Articles;
     } catch (error) {
