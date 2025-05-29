@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       Category.belongsToMany(models.Article, {
         through: 'articleCategories',  // Tabla intermedia, tal cual como en la base de datos
         as: 'articles',                // Nombre del alias para la relación
-        
+        foreignKey: 'categoryId', // 👈 Mandamos a sequielize las variables de nuestra tabla articleCategories
+        otherKey: 'articleId'     // 👈 
       });
     }
   }
