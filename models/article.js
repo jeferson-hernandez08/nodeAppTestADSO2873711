@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       // Un articulo pertenece a un usuario
       Article.belongsTo(models.User, {
-        foreignKey: 'userId',             // Clave foránea en el modelo
+        foreignKey: 'userId',             // Clave foránea en el modelo | ERROR CORREGIDO
         as: 'User'
       });   
       
@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       Article.belongsToMany(models.Category, {
         through: 'articleCategories',  // NOMBRE exacto de la Tabla intermedia
         as: 'categories',              // Nombre del alias para la relación
-        foreignKey: 'articleId', // 👈 minúsculas y snake_case
-        otherKey: 'categoryId'    // 👈 minúsculas y snake_case
+        foreignKey: 'articleId', // 👈 minúsculas y snake_case | ERROR CORREGIDO
+        otherKey: 'categoryId'    // 👈 minúsculas y snake_case  | ERROR CORREGIDO
       });
     }
   }
@@ -36,12 +36,12 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.TEXT,
     userId: { 
       type: DataTypes.INTEGER,
-      field: 'userId' // 👈 Nombre EXACTO de la columna en la BD 
+      field: 'userId' // 👈 Nombre EXACTO de la columna en la BD   | ERROR CORREGIDO
     }
   }, {
     sequelize,
     modelName: 'Article',
-    tableName: 'Articles', // Nombre de la tabla en la base de datos
+    tableName: 'Articles', // Nombre de la tabla en la base de datos   | ERROR CORREGIDO
   });
   return Article;
 };
